@@ -1,0 +1,388 @@
+[
+    {
+        "id": "20182b06ed2b31c2",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "59c24ebfa6310cd2",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "TempSala1",
+        "topic": "10401167/temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "c5c8fc544c0339ed"
+            ]
+        ]
+    },
+    {
+        "id": "8ba18fabe54d1454",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "TempSala2",
+        "topic": "10401167-Sala2/temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "f753f21bfcea7498"
+            ]
+        ]
+    },
+    {
+        "id": "aa08a639a13eea24",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "UmidSala1",
+        "topic": "10401167/umidade",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "6842e1802986778d"
+            ]
+        ]
+    },
+    {
+        "id": "4c554b12bc57fdcc",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "LuxSala1",
+        "topic": "10401167/lux",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "f4686c88bdedbb08"
+            ]
+        ]
+    },
+    {
+        "id": "fcb706bdbe99e982",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "UmidSala2",
+        "topic": "10401167-Sala2/umidade",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "397051ea58fcfb7f"
+            ]
+        ]
+    },
+    {
+        "id": "59923dc34a27021a",
+        "type": "mqtt in",
+        "z": "20182b06ed2b31c2",
+        "name": "LuxSala2",
+        "topic": "10401167-Sala2/lux",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f81b2442369a3080",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 420,
+        "wires": [
+            [
+                "c20415a6ea58d901",
+                "5e1e61d1994aaf77"
+            ]
+        ]
+    },
+    {
+        "id": "39a902d760ddfc64",
+        "type": "function",
+        "z": "20182b06ed2b31c2",
+        "name": "whatsFunction",
+        "func": "var mensagem1 = msg.payload[0];\nvar mensagem2 = msg.payload[1];\nvar mensagem3 = msg.payload[2];\nvar mensagem4 = msg.payload[3];\nvar mensagem5 = msg.payload[4];\nvar mensagem6 = msg.payload[5];\nmsg.payload = \"Dados da sala 1: \" + \" Temperatura: \" + mensagem1 + \" Umidade: \" + mensagem2 + \" Luminosidade: \" + mensagem3 + \"  ---  Dados da sala 2: \" + \" Temperatura: \"  + mensagem4 + \" Umidade: \" + mensagem5  + \" Luminosidade: \" + mensagem6 \n;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 280,
+        "wires": [
+            [
+                "7e6e2d76dddc0af7"
+            ]
+        ]
+    },
+    {
+        "id": "7e6e2d76dddc0af7",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "20182b06ed2b31c2",
+        "name": "",
+        "credtype": "account",
+        "account": "e3b29be263752ae4",
+        "text": "payload",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 940,
+        "y": 280,
+        "wires": [
+            [
+                "f22b2d5cb6d0514f"
+            ]
+        ]
+    },
+    {
+        "id": "c5c8fc544c0339ed",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala1Temp",
+        "measurement": "TemperaturaS1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 510,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c20415a6ea58d901",
+        "type": "join",
+        "z": "20182b06ed2b31c2",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "6",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "39a902d760ddfc64"
+            ]
+        ]
+    },
+    {
+        "id": "f22b2d5cb6d0514f",
+        "type": "debug",
+        "z": "20182b06ed2b31c2",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f753f21bfcea7498",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala2Temp",
+        "measurement": "TemperaturaS2",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6842e1802986778d",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala1Umid",
+        "measurement": "UmidadeS1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "397051ea58fcfb7f",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala2Umid",
+        "measurement": "UmidadeS2",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f4686c88bdedbb08",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala1Lux",
+        "measurement": "LuxS1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 600,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5e1e61d1994aaf77",
+        "type": "influxdb out",
+        "z": "20182b06ed2b31c2",
+        "influxdb": "810c79923d7088f3",
+        "name": "Sala2Lux",
+        "measurement": "LuxS2",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "7db5d887151a6e31",
+        "bucket": "Bucket_Proj",
+        "x": 600,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f81b2442369a3080",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e3b29be263752ae4",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "WhatsApp API Account "
+    },
+    {
+        "id": "810c79923d7088f3",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDB Proj",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    }
+]
